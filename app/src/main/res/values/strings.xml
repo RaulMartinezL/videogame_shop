@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">tienda_videojuegos</string>
+
+
+    <string-array name="consolas">
+        <item>ps4</item>
+        <item>xbox</item>
+    </string-array>
 </resources>
