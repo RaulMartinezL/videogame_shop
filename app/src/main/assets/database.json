@@ -2,29 +2,35 @@
   "xbox_games": [
     {
       "game_name": "xbox1",
-      "game_description": "xbox1 game description"
+      "game_description": "xbox1 game description",
+      "image": "R.drawable.m9"
     },
     {
       "game_name": "xbox2",
-      "game_description": "xbox2 game description"
+      "game_description": "xbox2 game description",
+      "image": "R.drawable.m9"
     },
     {
       "game_name": "xbox3",
-      "game_description": "xbox3 game description"
+      "game_description": "xbox3 game description",
+      "image": "R.drawable.m9"
     }
   ],
   "ps4_games": [
     {
       "game_name": "ps4_1",
-      "game_description": "ps4_1 game description"
+      "game_description": "ps4_1 game description",
+      "image": "R.drawable.m9"
     },
     {
       "game_name": "ps4_2",
-      "game_description": "ps4_2 game description"
+      "game_description": "ps4_2 game description",
+      "image": "R.drawable.m9"
     },
     {
       "game_name": "ps4_3",
-      "game_description": "ps4_3 game description"
+      "game_description": "ps4_3 game description",
+      "image": "R.drawable.m9"
     }
   ]
 }
