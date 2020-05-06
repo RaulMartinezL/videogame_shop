@@ -3,10 +3,12 @@ package com.example.tienda_videojuegos;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.tienda_videojuegos.notedb.Database;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +18,56 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class PS4Games extends AppCompatActivity {
 
+    Database database = new Database();
     ListView listView;
 
-    String[] gameTitle = {"The last of Us", "Call of duty 4", "Kingdom Heart"};
-
-    String[] gameDescription = {"TLOU", "Cod4", "KH"};
+    List<String> gameTitle = new ArrayList<String>();
+    List<String> gameDescription = new ArrayList<String>();
 
     int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
+
+    void loadDatabase(){
+        try {
+            String object = database.loadJSONFromAsset(this);
+            JSONObject obj = new JSONObject(object);
+            JSONArray m_jArray = obj.getJSONArray("ps4_games");
+
+            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArray.length(); i++){
+                JSONObject jo_inside = m_jArray.getJSONObject(i);
+                Log.d("Details->>", jo_inside.getString("game_name"));
+                String game_name = jo_inside.getString("game_name");
+                String game_description = jo_inside.getString("game_description");
+
+                gameTitle.add(game_name);
+                gameDescription.add(game_description);
+
+            }
+
+
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps4_games);
+        loadDatabase();
 
 
         listView = findViewById(R.id.ps4Games);
@@ -42,8 +80,8 @@ public class PS4Games extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), GameDetail.class);
-                intent.putExtra("AlbumTitle", gameTitle[position]);
-                intent.putExtra("AlbumDescription", gameDescription[position]);
+                intent.putExtra("AlbumTitle", gameTitle.get(position));
+                intent.putExtra("AlbumDescription", gameDescription.get(position));
                 intent.putExtra("AlbumImage", gamePicture[position]);
                 startActivity(intent);
             }
@@ -63,11 +101,11 @@ public class PS4Games extends AppCompatActivity {
         String[] gameDescription;
         int[] gamePicture;
 
-        MyAdapter(Context c, String title[], String description[], int imgs[]){
+        MyAdapter(Context c,List<String> title, List<String> description, int imgs[]){
             super(c, R.layout.row_game, R.id.gameTitle, title);
             this.context = c;
-            this.gameTitle = title;
-            this.gameDescription = description;
+            this.gameTitle = title.toArray(new String[0]);
+            this.gameDescription = description.toArray(new String[0]);
             this.gamePicture = imgs;
 
         }
