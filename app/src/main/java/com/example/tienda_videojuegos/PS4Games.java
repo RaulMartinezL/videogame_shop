@@ -3,7 +3,7 @@ package com.example.tienda_videojuegos;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.tienda_videojuegos.notedb.Database;
+import com.example.tienda_videojuegos.db.Database;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,39 +36,10 @@ public class PS4Games extends AppCompatActivity {
 
     int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
-    void loadDatabase(){
-        try {
-            String object = database.loadJSONFromAsset(this);
-            JSONObject obj = new JSONObject(object);
-            JSONArray m_jArray = obj.getJSONArray("ps4_games");
-
-            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> m_li;
-
-            for (int i = 0; i < m_jArray.length(); i++){
-                JSONObject jo_inside = m_jArray.getJSONObject(i);
-                Log.d("Details->>", jo_inside.getString("game_name"));
-                String game_name = jo_inside.getString("game_name");
-                String game_description = jo_inside.getString("game_description");
-
-                gameTitle.add(game_name);
-                gameDescription.add(game_description);
-
-            }
-
-
-        } catch (JSONException ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps4_games);
-        loadDatabase();
-
 
         listView = findViewById(R.id.ps4Games);
 
@@ -86,8 +57,6 @@ public class PS4Games extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
 
@@ -107,7 +76,6 @@ public class PS4Games extends AppCompatActivity {
             this.gameTitle = title.toArray(new String[0]);
             this.gameDescription = description.toArray(new String[0]);
             this.gamePicture = imgs;
-
         }
 
         @NonNull

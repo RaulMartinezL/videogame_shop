@@ -1,7 +1,6 @@
-package com.example.tienda_videojuegos.notedb;
+package com.example.tienda_videojuegos.db;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
 import java.io.IOException;
 import java.io.InputStream;

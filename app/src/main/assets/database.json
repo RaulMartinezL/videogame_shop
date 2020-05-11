@@ -1,36 +1,52 @@
 {
-  "xbox_games": [
+  "games": [
     {
-      "game_name": "xbox1",
-      "game_description": "xbox1 game description",
-      "image": "R.drawable.m9"
+      "name": "xbox1",
+      "description": "xbox1 game description",
+      "price": "10",
+      "platform": "xbox",
+      "incoming_date": "10/03/2020",
+      "is_on_sale": "no"
     },
     {
-      "game_name": "xbox2",
-      "game_description": "xbox2 game description",
-      "image": "R.drawable.m9"
+      "name": "xbox2",
+      "description": "xbox2 game description",
+      "price": "20",
+      "platform": "xbox",
+      "incoming_date": "10/03/2019",
+      "is_on_sale": "yes"
     },
     {
-      "game_name": "xbox3",
-      "game_description": "xbox3 game description",
-      "image": "R.drawable.m9"
-    }
-  ],
-  "ps4_games": [
-    {
-      "game_name": "ps4_1",
-      "game_description": "ps4_1 game description",
-      "image": "R.drawable.m9"
+      "name": "xbox3",
+      "description": "xbox3 game description",
+      "price": "30",
+      "platform": "xbox",
+      "incoming_date": "10/04/2020",
+      "is_on_sale": "no"
     },
     {
-      "game_name": "ps4_2",
-      "game_description": "ps4_2 game description",
-      "image": "R.drawable.m9"
+      "name": "ps4_1",
+      "description": "ps4_1 game description",
+      "price": "10",
+      "platform": "ps4",
+      "incoming_date": "10/03/2020",
+      "is_on_sale": "no"
     },
     {
-      "game_name": "ps4_3",
-      "game_description": "ps4_3 game description",
-      "image": "R.drawable.m9"
+      "name": "ps4_2",
+      "description": "ps4_2 game description",
+      "price": "20",
+      "platform": "ps4",
+      "incoming_date": "10/03/2019",
+      "is_on_sale": "yes"
+    },
+    {
+      "name": "ps4_3",
+      "description": "ps4_3 game description",
+      "price": "30",
+      "platform": "ps4",
+      "incoming_date": "10/04/2020",
+      "is_on_sale": "no"
     }
   ]
 }
