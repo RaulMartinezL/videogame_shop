@@ -3,12 +3,14 @@ package com.example.tienda_videojuegos;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.tienda_videojuegos.db.Database;
+
+import com.example.tienda_videojuegos.db.NoteDatabase;
+import com.example.tienda_videojuegos.db.Videojuego;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,21 +20,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class PS4Games extends AppCompatActivity {
 
-    Database database = new Database();
     ListView listView;
 
     List<String> gameTitle = new ArrayList<String>();
     List<String> gameDescription = new ArrayList<String>();
+    List<String> gamePrice = new ArrayList<String>();
+    List<String> gamePlatform = new ArrayList<String>();
+    List<String> gameDate = new ArrayList<String>();
+    List<String> gameSale = new ArrayList<String>();
+
 
     int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
@@ -40,8 +41,25 @@ public class PS4Games extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps4_games);
-
         listView = findViewById(R.id.ps4Games);
+
+        SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
+        Videojuego foo = new Videojuego(gameDatabase);
+        String query = "SELECT * FROM GAMES WHERE platform = 'ps4'";
+
+        ArrayList<List<String>> ps4Games = foo.getData(query);
+
+
+        for (int i = 0; i < ps4Games.size(); i++){
+
+            gameTitle.add(ps4Games.get(i).get(0));
+            gameDescription.add(ps4Games.get(i).get(1));
+            gamePrice.add(ps4Games.get(i).get(2));
+            gamePlatform.add(ps4Games.get(i).get(3));
+            gameDate.add(ps4Games.get(i).get(4));
+            gameSale.add(ps4Games.get(i).get(5));
+        }
+
 
         MyAdapter adapter = new MyAdapter(this, gameTitle, gameDescription, gamePicture);
         listView.setAdapter(adapter);
@@ -51,9 +69,9 @@ public class PS4Games extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), GameDetail.class);
-                intent.putExtra("AlbumTitle", gameTitle.get(position));
-                intent.putExtra("AlbumDescription", gameDescription.get(position));
-                intent.putExtra("AlbumImage", gamePicture[position]);
+                intent.putExtra("GameTitle", gameTitle.get(position));
+                intent.putExtra("GameDescription", gameDescription.get(position));
+                intent.putExtra("GameImage", gamePicture[position]);
                 startActivity(intent);
             }
         });
@@ -70,7 +88,7 @@ public class PS4Games extends AppCompatActivity {
         String[] gameDescription;
         int[] gamePicture;
 
-        MyAdapter(Context c,List<String> title, List<String> description, int imgs[]){
+        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs){
             super(c, R.layout.row_game, R.id.gameTitle, title);
             this.context = c;
             this.gameTitle = title.toArray(new String[0]);

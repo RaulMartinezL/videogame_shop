@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.tienda_videojuegos.db.Database;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +26,6 @@ import java.util.List;
 
 public class XboxGames extends AppCompatActivity {
 
-    Database database = new Database();
     ListView listView;
 
     List<String> gameTitle = new ArrayList<String>();
@@ -36,39 +33,12 @@ public class XboxGames extends AppCompatActivity {
 
     int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
-    void loadDatabase(){
-        try {
-            String object = database.loadJSONFromAsset(this);
-            JSONObject obj = new JSONObject(object);
-            JSONArray m_jArray = obj.getJSONArray("xbox_games");
-
-            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> m_li;
-
-            for (int i = 0; i < m_jArray.length(); i++){
-                JSONObject jo_inside = m_jArray.getJSONObject(i);
-                Log.d("Details->>", jo_inside.getString("game_name"));
-                String game_name = jo_inside.getString("game_name");
-                String game_description = jo_inside.getString("game_description");
-
-                gameTitle.add(game_name);
-                gameDescription.add(game_description);
-
-            }
-
-
-        } catch (JSONException ex) {
-            ex.printStackTrace();
-        }
-
-    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xbox_games);
-        loadDatabase();
 
         listView = findViewById(R.id.xboxGames);
 

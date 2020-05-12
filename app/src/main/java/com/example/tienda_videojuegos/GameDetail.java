@@ -21,6 +21,7 @@ public class GameDetail extends AppCompatActivity {
 
         String albumTitle = getIntent().getStringExtra("AlbumTitle");
         String albumDescription = getIntent().getStringExtra("AlbumDescription");
+        // null pointer exception en este linea
         int albumImage = (int) Objects.requireNonNull(getIntent().getExtras().get("AlbumImage"));
 
         ((TextView)findViewById(R.id.textViewTitle)).setText(albumTitle);

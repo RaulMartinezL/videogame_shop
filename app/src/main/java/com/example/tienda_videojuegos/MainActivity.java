@@ -24,37 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
-
-        SQLiteDatabase db = gameDatabase.getReadableDatabase();
-
-        Cursor cursor = db.query("GAMES",
-                new String[] {"_id", "NAME"},
-                null,
-                null,
-                null, null, null);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         String[] consoleNames = {"ps4", "xbox"};
         ListView listView = (ListView) findViewById(R.id.consolas);
 
