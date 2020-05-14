@@ -17,15 +17,6 @@ public class Videojuego {
 
         this.gameDatabase = database;
 
-        /*
-        List<String> name = new ArrayList<String>();
-        List<String> description = new ArrayList<String>();
-        List<String> price = new ArrayList<String>();
-        List<String> platform = new ArrayList<String>();
-        List<String> date = new ArrayList<String>();
-        List<String> sale = new ArrayList<String>();
-         */
-
     }
 
 

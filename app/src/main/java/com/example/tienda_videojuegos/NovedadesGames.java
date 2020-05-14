@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -23,15 +22,11 @@ import android.widget.TextView;
 import com.example.tienda_videojuegos.db.NoteDatabase;
 import com.example.tienda_videojuegos.db.Videojuego;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class XboxGames extends AppCompatActivity {
+public class NovedadesGames extends AppCompatActivity {
+
 
     ListView listView;
 
@@ -42,35 +37,33 @@ public class XboxGames extends AppCompatActivity {
     List<String> gameDate = new ArrayList<String>();
     List<String> gameSale = new ArrayList<String>();
 
-    int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
-
+    int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xbox_games);
-        listView = findViewById(R.id.xboxGames);
+        setContentView(R.layout.activity_novedades_games);
+        listView = findViewById(R.id.novedadesGames);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
-
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
-        String query = "SELECT * FROM GAMES WHERE platform = 'xbox'";
-        ArrayList<List<String>> xboxGames = foo.getData(query);
+        String query = "SELECT * FROM GAMES  WHERE date = 'true' ";
+        ArrayList<List<String>> novedadesGames = foo.getData(query);
 
-        for (int i = 0; i < xboxGames.size(); i++){
-            gameTitle.add(xboxGames.get(i).get(0));
-            gameDescription.add(xboxGames.get(i).get(1));
-            gamePrice.add(xboxGames.get(i).get(2));
-            gamePlatform.add(xboxGames.get(i).get(3));
-            gameDate.add(xboxGames.get(i).get(4));
-            gameSale.add(xboxGames.get(i).get(5));
+
+        for (int i = 0; i < novedadesGames.size(); i++){
+            gameTitle.add(novedadesGames.get(i).get(0));
+            gameDescription.add(novedadesGames.get(i).get(1));
+            gamePrice.add(novedadesGames.get(i).get(2));
+            gamePlatform.add(novedadesGames.get(i).get(3));
+            gameDate.add(novedadesGames.get(i).get(4));
+            gameSale.add(novedadesGames.get(i).get(5));
         }
-
 
 
         MyAdapter adapter = new MyAdapter(this, gameTitle, gameDescription, gamePicture);
@@ -88,7 +81,6 @@ public class XboxGames extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -97,14 +89,17 @@ public class XboxGames extends AppCompatActivity {
     }
 
 
+
+
     class MyAdapter extends ArrayAdapter<String> {
+
 
         Context context;
         String[] gameTitle;
         String[] gameDescription;
         int[] gamePicture;
 
-        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs) {
+        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs){
             super(c, R.layout.row_game, R.id.gameTitle, title);
             this.context = c;
             this.gameTitle = title.toArray(new String[0]);
@@ -128,4 +123,10 @@ public class XboxGames extends AppCompatActivity {
             return row;
         }
     }
+
+
+
+
+
 }
+

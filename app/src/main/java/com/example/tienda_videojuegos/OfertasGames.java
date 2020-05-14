@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -23,15 +22,11 @@ import android.widget.TextView;
 import com.example.tienda_videojuegos.db.NoteDatabase;
 import com.example.tienda_videojuegos.db.Videojuego;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class XboxGames extends AppCompatActivity {
+public class OfertasGames extends AppCompatActivity {
+
 
     ListView listView;
 
@@ -44,34 +39,28 @@ public class XboxGames extends AppCompatActivity {
 
     int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xbox_games);
-        listView = findViewById(R.id.xboxGames);
+        setContentView(R.layout.activity_ofertas_games);
+        listView = findViewById(R.id.ofertasGame);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
-
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
-        String query = "SELECT * FROM GAMES WHERE platform = 'xbox'";
-        ArrayList<List<String>> xboxGames = foo.getData(query);
+        String query = "SELECT * FROM GAMES WHERE platform = 'ps4'";
+        ArrayList<List<String>> ps4Games = foo.getData(query);
 
-        for (int i = 0; i < xboxGames.size(); i++){
-            gameTitle.add(xboxGames.get(i).get(0));
-            gameDescription.add(xboxGames.get(i).get(1));
-            gamePrice.add(xboxGames.get(i).get(2));
-            gamePlatform.add(xboxGames.get(i).get(3));
-            gameDate.add(xboxGames.get(i).get(4));
-            gameSale.add(xboxGames.get(i).get(5));
+        for (int i = 0; i < ps4Games.size(); i++){
+            gameTitle.add(ps4Games.get(i).get(0));
+            gameDescription.add(ps4Games.get(i).get(1));
+            gamePrice.add(ps4Games.get(i).get(2));
+            gamePlatform.add(ps4Games.get(i).get(3));
+            gameDate.add(ps4Games.get(i).get(4));
+            gameSale.add(ps4Games.get(i).get(5));
         }
-
-
 
         MyAdapter adapter = new MyAdapter(this, gameTitle, gameDescription, gamePicture);
         listView.setAdapter(adapter);
@@ -89,6 +78,7 @@ public class XboxGames extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -97,14 +87,17 @@ public class XboxGames extends AppCompatActivity {
     }
 
 
+
+
     class MyAdapter extends ArrayAdapter<String> {
+
 
         Context context;
         String[] gameTitle;
         String[] gameDescription;
         int[] gamePicture;
 
-        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs) {
+        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs){
             super(c, R.layout.row_game, R.id.gameTitle, title);
             this.context = c;
             this.gameTitle = title.toArray(new String[0]);
@@ -128,4 +121,7 @@ public class XboxGames extends AppCompatActivity {
             return row;
         }
     }
+
+
+
 }

@@ -3,6 +3,7 @@ package com.example.tienda_videojuegos;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.tienda_videojuegos.db.NoteDatabase;
 import com.example.tienda_videojuegos.db.Videojuego;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -43,15 +45,17 @@ public class PS4Games extends AppCompatActivity {
         setContentView(R.layout.activity_ps4_games);
         listView = findViewById(R.id.ps4Games);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
         String query = "SELECT * FROM GAMES WHERE platform = 'ps4'";
-
         ArrayList<List<String>> ps4Games = foo.getData(query);
 
 
         for (int i = 0; i < ps4Games.size(); i++){
-
             gameTitle.add(ps4Games.get(i).get(0));
             gameDescription.add(ps4Games.get(i).get(1));
             gamePrice.add(ps4Games.get(i).get(2));
@@ -75,6 +79,13 @@ public class PS4Games extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
 
@@ -112,8 +123,5 @@ public class PS4Games extends AppCompatActivity {
             return row;
         }
     }
-
-
-
 }
  

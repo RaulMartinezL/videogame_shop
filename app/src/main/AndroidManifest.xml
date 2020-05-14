@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Carrito"></activity>
+        <activity android:name=".OfertasGames"></activity>
+        <activity android:name=".NovedadesGames" />
+        <activity android:name=".Carrito" />
         <activity android:name=".GameDetail" />
         <activity android:name=".XboxGames" />
         <activity android:name=".PS4Games" />

@@ -79,8 +79,8 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 String game_description = jo_inside.getString("description");
                 String game_price = jo_inside.getString("price");
                 String game_platform = jo_inside.getString("platform");
-                String game_date = jo_inside.getString("incoming_date");
-                String game_onsale = jo_inside.getString("is_on_sale");
+                String game_date = jo_inside.getString("date");
+                String game_onsale = jo_inside.getString("sale");
 
                 addVideogame(db, game_name, game_description, game_price,
                         game_platform, game_date, game_onsale);
