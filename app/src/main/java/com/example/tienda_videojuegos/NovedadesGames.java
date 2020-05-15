@@ -36,8 +36,6 @@ public class NovedadesGames extends AppCompatActivity {
     List<String> gamePlatform = new ArrayList<String>();
     List<String> gameDate = new ArrayList<String>();
     List<String> gameSale = new ArrayList<String>();
-
-
     int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
     @Override
@@ -45,7 +43,6 @@ public class NovedadesGames extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novedades_games);
         listView = findViewById(R.id.novedadesGames);
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,7 +84,6 @@ public class NovedadesGames extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
 
 
 

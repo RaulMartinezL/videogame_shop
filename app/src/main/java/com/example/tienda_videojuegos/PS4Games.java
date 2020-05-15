@@ -2,11 +2,15 @@ package com.example.tienda_videojuegos;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.tienda_videojuegos.db.NoteDatabase;
 import com.example.tienda_videojuegos.db.Videojuego;
+import com.google.android.material.navigation.NavigationView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +18,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,6 +32,10 @@ import java.util.List;
 
 public class PS4Games extends AppCompatActivity {
 
+
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
     ListView listView;
 
     List<String> gameTitle = new ArrayList<String>();
@@ -45,9 +54,52 @@ public class PS4Games extends AppCompatActivity {
         setContentView(R.layout.activity_ps4_games);
         listView = findViewById(R.id.ps4Games);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout_ps4);
+        navigationView = findViewById(R.id.navigationView);
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId())
+                {
+                    case R.id.nav_ps4:
+                        item.setChecked(true);
+                        Intent intentPS4 = new Intent(PS4Games.this, PS4Games.class);
+                        startActivity(intentPS4);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_xbox:
+                        item.setChecked(true);
+                        Intent intentXbox = new Intent(PS4Games.this, XboxGames.class);
+                        startActivity(intentXbox);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_ofertas:
+                        item.setChecked(true);
+                        Intent intentOfertas = new Intent(PS4Games.this, OfertasGames.class);
+                        startActivity(intentOfertas);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_novedades:
+                        item.setChecked(true);
+                        Intent intentNovedades = new Intent(PS4Games.this, NovedadesGames.class);
+                        startActivity(intentNovedades);
+                        drawerLayout.closeDrawers();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        final ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
@@ -87,6 +139,18 @@ public class PS4Games extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId())
+        {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 

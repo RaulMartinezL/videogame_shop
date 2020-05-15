@@ -37,7 +37,7 @@ public class OfertasGames extends AppCompatActivity {
     List<String> gameDate = new ArrayList<String>();
     List<String> gameSale = new ArrayList<String>();
 
-    int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9};
+    int[] gamePicture = {R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9, R.drawable.m9};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class OfertasGames extends AppCompatActivity {
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
-        String query = "SELECT * FROM GAMES WHERE platform = 'ps4'";
+        String query = "SELECT * FROM GAMES WHERE sale = 'true' ";
         ArrayList<List<String>> ps4Games = foo.getData(query);
 
         for (int i = 0; i < ps4Games.size(); i++){

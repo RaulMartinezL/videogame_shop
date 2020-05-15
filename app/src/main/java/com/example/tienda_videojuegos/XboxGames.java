@@ -4,14 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,20 +21,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.example.tienda_videojuegos.db.NoteDatabase;
 import com.example.tienda_videojuegos.db.Videojuego;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class XboxGames extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
     ListView listView;
 
     List<String> gameTitle = new ArrayList<String>();
@@ -52,9 +52,50 @@ public class XboxGames extends AppCompatActivity {
         setContentView(R.layout.activity_xbox_games);
         listView = findViewById(R.id.xboxGames);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout_xbox);
+        navigationView = findViewById(R.id.navigationView);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId())
+                {
+                    case R.id.nav_ps4:
+                        item.setChecked(true);
+                        Intent intentPS4 = new Intent(XboxGames.this, PS4Games.class);
+                        startActivity(intentPS4);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_xbox:
+                        item.setChecked(true);
+                        Intent intentXbox = new Intent(XboxGames.this, XboxGames.class);
+                        startActivity(intentXbox);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_ofertas:
+                        item.setChecked(true);
+                        Intent intentOfertas = new Intent(XboxGames.this, OfertasGames.class);
+                        startActivity(intentOfertas);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_novedades:
+                        item.setChecked(true);
+                        Intent intentNovedades = new Intent(XboxGames.this, NovedadesGames.class);
+                        startActivity(intentNovedades);
+                        drawerLayout.closeDrawers();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
 
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
@@ -94,6 +135,17 @@ public class XboxGames extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId())
+        {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
