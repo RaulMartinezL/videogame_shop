@@ -2,6 +2,7 @@ package com.example.tienda_videojuegos;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -57,6 +58,10 @@ public class XboxGames extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout_xbox);
         navigationView = findViewById(R.id.navigationView);
 
+        final ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -94,6 +99,7 @@ public class XboxGames extends AppCompatActivity {
                 return false;
             }
         });
+
 
 
 
