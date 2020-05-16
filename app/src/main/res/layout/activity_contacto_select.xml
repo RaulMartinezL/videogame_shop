@@ -29,6 +29,7 @@
                 android:padding="10dp"
                 app:title="Canadian Games"
                 app:titleTextColor="@android:color/white" />
+
         </com.google.android.material.appbar.AppBarLayout>
 
 

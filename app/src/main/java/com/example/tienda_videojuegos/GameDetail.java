@@ -28,7 +28,6 @@ public class GameDetail extends AppCompatActivity {
 
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +86,7 @@ public class GameDetail extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(GameDetail.this, GPS.class);
+                        Intent intentGPS = new Intent(GameDetail.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;

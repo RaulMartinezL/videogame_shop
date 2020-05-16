@@ -88,7 +88,7 @@ public class ContactoSelect extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(ContactoSelect.this, GPS.class);
+                        Intent intentGPS = new Intent(ContactoSelect.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;

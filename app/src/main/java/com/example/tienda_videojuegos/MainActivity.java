@@ -38,6 +38,8 @@ import java.util.List;
 // TODO: carrito de la compra
 // TODO: arreglar la query de ofertas
 // TODO: ofertas gestionarlas con fechas
+// TODO: Contactar Toast de comprobacion del mail
+// TODO: Edit text boxes que no cambien de tamaño o limitar un tamaño maximo de caracteres.
 
 
 
@@ -117,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(MainActivity.this, GPS.class);
+                        Intent intentGPS = new Intent(MainActivity.this, MapsActivity.class);
+
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;

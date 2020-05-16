@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -79,7 +81,7 @@ public class Contactar extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(Contactar.this, GPS.class);
+                        Intent intentGPS = new Intent(Contactar.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
@@ -87,6 +89,26 @@ public class Contactar extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
+        final EditText edit_nombre = (EditText)findViewById(R.id.consulta_nombre);
+        final EditText edit_email = (EditText)findViewById(R.id.consulta_email);
+        final EditText edit_consulta = (EditText)findViewById(R.id.consulta_consulta);
+
+
+        String getEmailId = edit_email.getText().toString();
+        // Check if email id is valid or not
+        if (!isEmailValid(getEmailId)){
+             Toast.makeText(getApplicationContext(),"Introduce un email valido porfavor",Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
+
+
 
 
     }
@@ -108,6 +130,11 @@ public class Contactar extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
 }

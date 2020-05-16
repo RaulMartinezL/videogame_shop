@@ -104,7 +104,7 @@ public class XboxGames extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(XboxGames.this, GPS.class);
+                        Intent intentGPS = new Intent(XboxGames.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;

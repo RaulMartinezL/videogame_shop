@@ -9,8 +9,6 @@
     android:id="@+id/drawer_layout">
 
 
-
-
     <LinearLayout
         android:id="@+id/linearLayoutContacto"
         android:layout_width="match_parent"
@@ -18,23 +16,107 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/AppBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/AppBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:padding="10dp"
-            app:title="Canadian Games"
-            app:titleTextColor="@android:color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:padding="10dp"
+                app:title="Canadian Games"
+                app:titleTextColor="@android:color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="78dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre:"/>
+
+            <EditText
+                android:id="@+id/consulta_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="128dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"/>
+
+
+        <EditText
+            android:id="@+id/consulta_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="254dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consulta:"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="278dp"
+        >
+
+        <EditText
+            android:id="@+id/consulta_consulta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/contactar_siguiente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="Enviar"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            />
+    </RelativeLayout>
+
 
 
     <com.google.android.material.navigation.NavigationView
@@ -45,7 +127,6 @@
         app:menu="@menu/drawer_menu"
         app:headerLayout="@layout/header_layout"
         />
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

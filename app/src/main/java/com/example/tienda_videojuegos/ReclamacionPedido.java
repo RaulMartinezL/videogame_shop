@@ -81,7 +81,7 @@ public class ReclamacionPedido extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(ReclamacionPedido.this, GPS.class);
+                        Intent intentGPS = new Intent(ReclamacionPedido.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;

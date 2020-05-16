@@ -104,7 +104,7 @@ public class OfertasGames extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(OfertasGames.this, GPS.class);
+                        Intent intentGPS = new Intent(OfertasGames.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;

@@ -105,7 +105,7 @@ public class PS4Games extends AppCompatActivity {
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(PS4Games.this, GPS.class);
+                        Intent intentGPS = new Intent(PS4Games.this, MapsActivity.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
