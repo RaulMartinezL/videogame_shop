@@ -40,6 +40,9 @@ import java.util.List;
 // TODO: ofertas gestionarlas con fechas
 // TODO: Contactar Toast de comprobacion del mail
 // TODO: Edit text boxes que no cambien de tamaño o limitar un tamaño maximo de caracteres.
+// TODO: Calcular la distancia del punto actual a la de la tienda.
+// TODO: hacer funcionar el boton de la app bar de la tienda
+// TODO:
 
 
 
@@ -176,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -9,8 +9,6 @@
     android:id="@+id/drawer_layout">
 
 
-
-
     <LinearLayout
         android:id="@+id/linearLayoutContacto"
         android:layout_width="match_parent"
@@ -35,6 +33,123 @@
         </com.google.android.material.appbar.AppBarLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="78dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre:"
+            android:paddingLeft="2dp"/>
+
+        <EditText
+            android:id="@+id/reclamacion_nombre"
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="128dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:paddingLeft="2dp"/>
+
+
+        <EditText
+            android:id="@+id/reclamacion_email"
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="198dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Factura:"
+            android:paddingLeft="2dp"/>
+
+
+        <EditText
+            android:id="@+id/reclamacion_id_factura"
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="254dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Motivo:"
+            android:paddingLeft="2dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="278dp">
+
+        <EditText
+            android:id="@+id/consulta_consulta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="350dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Imagen: "
+            android:paddingLeft="2dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añadir"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:id="@+id/añadir_imagen">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+    </RelativeLayout>
+
+
 
 
     <com.google.android.material.navigation.NavigationView
