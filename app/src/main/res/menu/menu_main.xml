@@ -3,7 +3,7 @@
 
 
     <item
-        android:id="@+id/app_bar_shop"
+        android:id="@+id/nav_boton_tienda"
         android:icon="@drawable/ic_shopping_cart_black_24dp"
         android:title="Item"
         app:showAsAction="always" />
