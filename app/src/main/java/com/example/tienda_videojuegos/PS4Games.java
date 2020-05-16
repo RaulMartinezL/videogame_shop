@@ -96,11 +96,23 @@ public class PS4Games extends AppCompatActivity {
                         startActivity(intentNovedades);
                         drawerLayout.closeDrawers();
                         return true;
+                    case R.id.nav_contacto:
+                        item.setChecked(true);
+                        Intent intentContacto = new Intent(PS4Games.this, ContactoSelect.class);
+                        startActivity(intentContacto);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_donde_estamos:
+                        item.setChecked(true);
+                        Intent intentGPS = new Intent(PS4Games.this, GPS.class);
+                        startActivity(intentGPS);
+                        drawerLayout.closeDrawers();
+                        return true;
                 }
                 return false;
             }
         });
-
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);

@@ -34,6 +34,12 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: home activity button pulsando en el texto
+// TODO: carrito de la compra
+// TODO: arreglar la query de ofertas
+// TODO: ofertas gestionarlas con fechas
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,6 +105,20 @@ public class MainActivity extends AppCompatActivity {
                         item.setChecked(true);
                         Intent intentNovedades = new Intent(MainActivity.this, NovedadesGames.class);
                         startActivity(intentNovedades);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_contacto:
+                        item.setChecked(true);
+                        Intent intentContacto = new Intent(MainActivity.this, ContactoSelect.class);
+                        startActivity(intentContacto);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_donde_estamos:
+                        item.setChecked(true);
+                        Intent intentGPS = new Intent(MainActivity.this, GPS.class);
+                        startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
                 }

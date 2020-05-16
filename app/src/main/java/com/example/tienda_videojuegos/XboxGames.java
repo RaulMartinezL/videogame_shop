@@ -95,6 +95,19 @@ public class XboxGames extends AppCompatActivity {
                         startActivity(intentNovedades);
                         drawerLayout.closeDrawers();
                         return true;
+                    case R.id.nav_contacto:
+                        item.setChecked(true);
+                        Intent intentContacto = new Intent(XboxGames.this, ContactoSelect.class);
+                        startActivity(intentContacto);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_donde_estamos:
+                        item.setChecked(true);
+                        Intent intentGPS = new Intent(XboxGames.this, GPS.class);
+                        startActivity(intentGPS);
+                        drawerLayout.closeDrawers();
+                        return true;
                 }
                 return false;
             }

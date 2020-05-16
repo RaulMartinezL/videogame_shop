@@ -1,7 +1,6 @@
 package com.example.tienda_videojuegos;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,31 +8,24 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.Objects;
+public class Contactar extends AppCompatActivity {
 
-public class GameDetail extends AppCompatActivity {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
 
-
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_detail);
+        setContentView(R.layout.activity_contactar);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,42 +44,42 @@ public class GameDetail extends AppCompatActivity {
                 {
                     case R.id.nav_ps4:
                         item.setChecked(true);
-                        Intent intentPS4 = new Intent(GameDetail.this, PS4Games.class);
+                        Intent intentPS4 = new Intent(Contactar.this, PS4Games.class);
                         startActivity(intentPS4);
                         drawerLayout.closeDrawers();
                         return true;
 
                     case R.id.nav_xbox:
                         item.setChecked(true);
-                        Intent intentXbox = new Intent(GameDetail.this, XboxGames.class);
+                        Intent intentXbox = new Intent(Contactar.this, XboxGames.class);
                         startActivity(intentXbox);
                         drawerLayout.closeDrawers();
                         return true;
 
                     case R.id.nav_ofertas:
                         item.setChecked(true);
-                        Intent intentOfertas = new Intent(GameDetail.this, OfertasGames.class);
+                        Intent intentOfertas = new Intent(Contactar.this, OfertasGames.class);
                         startActivity(intentOfertas);
                         drawerLayout.closeDrawers();
                         return true;
 
                     case R.id.nav_novedades:
                         item.setChecked(true);
-                        Intent intentNovedades = new Intent(GameDetail.this, NovedadesGames.class);
+                        Intent intentNovedades = new Intent(Contactar.this, NovedadesGames.class);
                         startActivity(intentNovedades);
                         drawerLayout.closeDrawers();
                         return true;
 
                     case R.id.nav_contacto:
                         item.setChecked(true);
-                        Intent intentContacto = new Intent(GameDetail.this, ContactoSelect.class);
+                        Intent intentContacto = new Intent(Contactar.this, ContactoSelect.class);
                         startActivity(intentContacto);
                         drawerLayout.closeDrawers();
                         return true;
 
                     case R.id.nav_donde_estamos:
                         item.setChecked(true);
-                        Intent intentGPS = new Intent(GameDetail.this, GPS.class);
+                        Intent intentGPS = new Intent(Contactar.this, GPS.class);
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
@@ -97,17 +89,7 @@ public class GameDetail extends AppCompatActivity {
         });
 
 
-        String albumTitle = getIntent().getStringExtra("GameTitle");
-        String albumDescription = getIntent().getStringExtra("GameDescription");
-        int albumImage = (int) Objects.requireNonNull(getIntent().getExtras().get("GameImage"));
-
-        ((TextView)findViewById(R.id.textViewTitle)).setText(albumTitle);
-        ((TextView)findViewById(R.id.textViewDescription)).setText(albumDescription);
-        ImageView photo = findViewById(R.id.imageView);
-        photo.setImageResource(albumImage);
     }
-
-
 
 
     @Override

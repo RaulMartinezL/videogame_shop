@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OfertasGames"
-    android:id="@+id/drawer_layout_ofertas">
+    tools:context=".Contactar"
+    android:id="@+id/drawer_layout">
+
 
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutContacto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -29,17 +30,9 @@
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
                 android:padding="10dp"
-                app:title="Juegos en oferta"
+                app:title="Canadian Games"
                 app:titleTextColor="@android:color/white" />
         </com.google.android.material.appbar.AppBarLayout>
-
-
-        <ListView
-            android:id="@+id/ofertasGame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraint"
-            tools:layout_editor_absoluteX="1dp" />
 
     </LinearLayout>
 
@@ -52,5 +45,7 @@
         app:menu="@menu/drawer_menu"
         app:headerLayout="@layout/header_layout"
         />
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
