@@ -42,7 +42,7 @@ import java.util.List;
 // TODO: Edit text boxes que no cambien de tamaño o limitar un tamaño maximo de caracteres.
 // TODO: Calcular la distancia del punto actual a la de la tienda.
 // TODO: hacer funcionar el boton de la app bar de la tienda
-// TODO:
+// TODO: estilos
 
 
 
@@ -133,20 +133,20 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
-        String query = "SELECT * FROM GAMES  WHERE date = 'true' ";
-        ArrayList<List<String>> novedadesGames = foo.getData(query);
+        String query_novedades = "SELECT * FROM GAMES  WHERE date = 'true' ";
+        ArrayList<List<String>> novedadesGames = foo.getData(query_novedades);
 
 
         for (int i = 0; i < novedadesGames.size(); i++){
             gameTitle.add(novedadesGames.get(i).get(0));
             gameDescription.add(novedadesGames.get(i).get(1));
-            gamePrice.add(novedadesGames.get(i).get(2));
-            gamePlatform.add(novedadesGames.get(i).get(3));
+            gamePlatform.add(novedadesGames.get(i).get(2));
+            gamePrice.add(novedadesGames.get(i).get(3));
             gameDate.add(novedadesGames.get(i).get(4));
             gameSale.add(novedadesGames.get(i).get(5));
         }
 
-        MyAdapter adapter1 = new MyAdapter(this, gameTitle, gameDescription, gamePicture);
+        MyAdapter adapter1 = new MyAdapter(this, gameTitle, gameDescription, gamePicture, gamePrice, gamePlatform);
         listView.setAdapter(adapter1);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -157,6 +157,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("GameTitle", gameTitle.get(position));
                 intent.putExtra("GameDescription", gameDescription.get(position));
                 intent.putExtra("GameImage", gamePicture[position]);
+                intent.putExtra("GamePrice", gamePrice.get(position));
+                intent.putExtra("GamePrice", gamePlatform.get(position));
+                intent.putExtra("GamePrice", gameDate.get(position));
+                intent.putExtra("GamePrice", gameSale.get(position));
                 startActivity(intent);
             }
         });
@@ -190,14 +194,18 @@ public class MainActivity extends AppCompatActivity {
         Context context;
         String[] gameTitle;
         String[] gameDescription;
+        String[] gamePrice;
+        String[] gamePlatform;
         int[] gamePicture;
 
-        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs){
+        MyAdapter(Context c, List<String> title, List<String> description, int[] imgs, List<String> price, List<String>  platform){
             super(c, R.layout.row_game, R.id.gameTitle, title);
             this.context = c;
             this.gameTitle = title.toArray(new String[0]);
             this.gameDescription = description.toArray(new String[0]);
             this.gamePicture = imgs;
+            this.gamePrice = price.toArray(new String[0]);
+            this.gamePlatform = platform.toArray(new String[0]);
         }
 
         @NonNull
@@ -208,10 +216,14 @@ public class MainActivity extends AppCompatActivity {
             ImageView images = row.findViewById(R.id.gameImage);
             TextView myTitle = row.findViewById(R.id.gameTitle);
             TextView myYear = row.findViewById(R.id.gameDescription);
+            TextView mPrice = row.findViewById(R.id.gamePrice);
+            TextView mPlatform = row.findViewById(R.id.gamePlatform);
 
             images.setImageResource(gamePicture[position]);
             myTitle.setText(gameTitle[position]);
             myYear.setText(gameDescription[position]);
+            mPrice.setText(gamePrice[position]);
+            mPlatform.setText(gamePlatform[position]);
 
             return row;
         }

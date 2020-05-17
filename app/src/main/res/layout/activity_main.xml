@@ -74,7 +74,6 @@
             tools:ignore="MissingConstraint"
             tools:layout_editor_absoluteX="1dp"
             android:layout_below="@+id/textView_main_novedades">
-
         </ListView>
 
 

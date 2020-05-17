@@ -214,6 +214,7 @@ public class PS4Games extends AppCompatActivity {
             mPlatform.setText(gamePlatform[position]);
 
 
+
             return row;
         }
     }
