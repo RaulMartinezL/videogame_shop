@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -15,31 +15,80 @@
         />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="305dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/gameTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:text="Game Title"
             android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
             android:textSize="20sp"
-            android:id="@+id/gameTitle"
-            />
+            android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/gameDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:text="Game Description"
             android:textColor="#a9a9a9"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
             android:textSize="15sp"
-            android:id="@+id/gameDescription"
-            />
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precio del juego "
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/gamePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Game Price"
+                android:textColor="#000"
+                android:textStyle="italic" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plataforma "
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/gamePlatform"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Game Platform"
+                android:textColor="#000"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
+
+
 
 </LinearLayout>

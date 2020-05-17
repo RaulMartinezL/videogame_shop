@@ -34,11 +34,18 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
+
         <ListView
             android:id="@+id/ps4Games"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:ignore="MissingConstraint"
+            android:layout_gravity="center"
+
+            android:dividerHeight="2dp"
+            android:divider="#000000"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
             tools:layout_editor_absoluteX="1dp" />
 
     </LinearLayout>

@@ -33,15 +33,54 @@
                 app:titleTextColor="@android:color/white" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ListView
-            android:id="@+id/novedadesGamesMain"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraint"
-            tools:layout_editor_absoluteX="1dp" />
+
 
 
     </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="70dp">
+
+        <ImageView
+            android:id="@+id/imagen_bienvenida"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/m9"
+
+            />
+
+        <TextView
+            android:id="@+id/textView_main_novedades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Novedades"
+            android:textColor="#000000"
+            android:layout_below="@+id/imagen_bienvenida"
+            android:gravity="center"
+
+            />
+
+        <ListView
+            android:id="@+id/novedadesGamesMain"
+            android:dividerHeight="2dp"
+            android:headerDividersEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraint"
+            tools:layout_editor_absoluteX="1dp"
+            android:layout_below="@+id/textView_main_novedades">
+
+        </ListView>
+
+
+
+
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
