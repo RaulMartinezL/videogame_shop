@@ -142,9 +142,9 @@ public class PS4Games extends AppCompatActivity {
                 intent.putExtra("GameDescription", gameDescription.get(position));
                 intent.putExtra("GameImage", gamePicture[position]);
                 intent.putExtra("GamePrice", gamePrice.get(position));
-                intent.putExtra("GamePrice", gamePlatform.get(position));
-                intent.putExtra("GamePrice", gameDate.get(position));
-                intent.putExtra("GamePrice", gameSale.get(position));
+                intent.putExtra("GamePlatform", gamePlatform.get(position));
+                intent.putExtra("GameDate", gameDate.get(position));
+                intent.putExtra("GameSale", gameSale.get(position));
                 startActivity(intent);
             }
         });
@@ -212,8 +212,6 @@ public class PS4Games extends AppCompatActivity {
             myYear.setText(gameDescription[position]);
             mPrice.setText(gamePrice[position]);
             mPlatform.setText(gamePlatform[position]);
-
-
 
             return row;
         }

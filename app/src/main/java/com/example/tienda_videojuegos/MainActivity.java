@@ -43,6 +43,7 @@ import java.util.List;
 // TODO: Calcular la distancia del punto actual a la de la tienda.
 // TODO: hacer funcionar el boton de la app bar de la tienda
 // TODO: estilos
+// TODO: hacer scroll con varios listviews
 
 
 
@@ -124,6 +125,14 @@ public class MainActivity extends AppCompatActivity {
                         Intent intentGPS = new Intent(MainActivity.this, MapsActivity.class);
 
                         startActivity(intentGPS);
+                        drawerLayout.closeDrawers();
+                        return true;
+
+                    case R.id.nav_carrito:
+                        item.setChecked(true);
+                        Intent intentCarrito = new Intent(MainActivity.this, Carrito.class);
+
+                        startActivity(intentCarrito);
                         drawerLayout.closeDrawers();
                         return true;
                 }

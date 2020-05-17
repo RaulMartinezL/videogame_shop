@@ -141,10 +141,9 @@ public class OfertasGames extends AppCompatActivity {
                 intent.putExtra("GameDescription", gameDescription.get(position));
                 intent.putExtra("GameImage", gamePicture[position]);
                 intent.putExtra("GamePrice", gamePrice.get(position));
-                intent.putExtra("GamePrice", gamePlatform.get(position));
-                intent.putExtra("GamePrice", gameDate.get(position));
-                intent.putExtra("GamePrice", gameSale.get(position));
-                startActivity(intent);
+                intent.putExtra("GamePlatform", gamePlatform.get(position));
+                intent.putExtra("GameDate", gameDate.get(position));
+                intent.putExtra("GameSale", gameSale.get(position));
                 startActivity(intent);
             }
         });

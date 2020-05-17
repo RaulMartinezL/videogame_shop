@@ -13,19 +13,28 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-public class GameDetail extends AppCompatActivity {
+public class GameDetail extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
+    String gameTitle;
+    String gameDescription;
+    int albumImage;
+    String gamePrice;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -47,8 +56,7 @@ public class GameDetail extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.nav_ps4:
                         item.setChecked(true);
                         Intent intentPS4 = new Intent(GameDetail.this, PS4Games.class);
@@ -96,17 +104,30 @@ public class GameDetail extends AppCompatActivity {
         });
 
 
-        String albumTitle = getIntent().getStringExtra("GameTitle");
-        String albumDescription = getIntent().getStringExtra("GameDescription");
-        int albumImage = (int) Objects.requireNonNull(getIntent().getExtras().get("GameImage"));
+        gameTitle = getIntent().getStringExtra("GameTitle");
+        gameDescription = getIntent().getStringExtra("GameDescription");
+        albumImage = (int) Objects.requireNonNull(getIntent().getExtras().get("GameImage"));
+        gamePrice = getIntent().getStringExtra("GamePrice");
 
-        ((TextView)findViewById(R.id.textViewTitle)).setText(albumTitle);
-        ((TextView)findViewById(R.id.textViewDescription)).setText(albumDescription);
+        ((TextView) findViewById(R.id.textViewTitle)).setText(gameTitle);
+        ((TextView) findViewById(R.id.textViewDescription)).setText(gameDescription);
         ImageView photo = findViewById(R.id.imageView);
         photo.setImageResource(albumImage);
+
+
+        FloatingActionButton botonAddToCart = findViewById(R.id.floatingButtonAddToCart);
+        botonAddToCart.setOnClickListener(this);
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), Carrito.class);
+        intent.putExtra("GameTitleCart", gameTitle);
+        intent.putExtra("GamePriceCart", gamePrice);
+
+        Toast.makeText(this, "Juego añadido a la cesta", Toast.LENGTH_SHORT).show();
+    }
 
 
     @Override
@@ -118,8 +139,7 @@ public class GameDetail extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId())
-        {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
@@ -128,3 +148,5 @@ public class GameDetail extends AppCompatActivity {
     }
 
 }
+
+
