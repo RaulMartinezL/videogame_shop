@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class Carrito extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
 
-    private Button NextProcessBtn;
+    private MaterialButton NextProcessBtn;
     private TextView txtTotalAmount;
 
     private Toolbar toolbar;
@@ -138,8 +139,8 @@ public class Carrito extends AppCompatActivity {
         //layoutManager = new LinearLayoutManager(this);
         //recyclerView.setLayoutManager(layoutManager);
 
-       // NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
-        //txtTotalAmount = (TextView) findViewById(R.id.total_price);
+        NextProcessBtn = findViewById(R.id.finalizar_compra);
+        // txtTotalAmount = (TextView) findViewById(R.id.total_price);
 
 
 
