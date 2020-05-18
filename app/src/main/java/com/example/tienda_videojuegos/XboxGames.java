@@ -108,6 +108,14 @@ public class XboxGames extends AppCompatActivity {
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
+
+                    case R.id.nav_carrito:
+                        item.setChecked(true);
+                        Intent intentCarrito = new Intent(XboxGames.this, Carrito.class);
+
+                        startActivity(intentCarrito);
+                        drawerLayout.closeDrawers();
+                        return true;
                 }
                 return false;
             }

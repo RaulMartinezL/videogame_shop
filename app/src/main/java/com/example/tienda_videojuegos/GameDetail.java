@@ -9,8 +9,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,6 +101,14 @@ public class GameDetail extends AppCompatActivity implements View.OnClickListene
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
+
+                    case R.id.nav_carrito:
+                        item.setChecked(true);
+                        Intent intentCarrito = new Intent(GameDetail.this, Carrito.class);
+
+                        startActivity(intentCarrito);
+                        drawerLayout.closeDrawers();
+                        return true;
                 }
                 return false;
             }
@@ -111,6 +122,7 @@ public class GameDetail extends AppCompatActivity implements View.OnClickListene
 
         ((TextView) findViewById(R.id.textViewTitle)).setText(gameTitle);
         ((TextView) findViewById(R.id.textViewDescription)).setText(gameDescription);
+        ((TextView) findViewById(R.id.textViewPrice)).setText(gamePrice);
         ImageView photo = findViewById(R.id.imageView);
         photo.setImageResource(albumImage);
 
@@ -122,9 +134,25 @@ public class GameDetail extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("GameTitleCart", gameTitle);
+        editor.putString("GamePriceCart", gamePrice);
+        editor.apply();
+
+
+
+        /*
         Intent intent = new Intent(getApplicationContext(), Carrito.class);
+        Log.d("TAG", String.valueOf(gameTitle));
+        Log.d("TAG", String.valueOf(gamePrice));
         intent.putExtra("GameTitleCart", gameTitle);
         intent.putExtra("GamePriceCart", gamePrice);
+        startActivityForResult(intent, 1);
+
+         */
+
 
         Toast.makeText(this, "Juego añadido a la cesta", Toast.LENGTH_SHORT).show();
     }

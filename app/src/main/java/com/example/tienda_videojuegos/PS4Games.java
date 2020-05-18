@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -96,6 +97,7 @@ public class PS4Games extends AppCompatActivity {
                         startActivity(intentNovedades);
                         drawerLayout.closeDrawers();
                         return true;
+
                     case R.id.nav_contacto:
                         item.setChecked(true);
                         Intent intentContacto = new Intent(PS4Games.this, ContactoSelect.class);
@@ -109,7 +111,16 @@ public class PS4Games extends AppCompatActivity {
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
+
+                    case R.id.nav_carrito:
+                        item.setChecked(true);
+                        Intent intentCarrito = new Intent(PS4Games.this, Carrito.class);
+
+                        startActivity(intentCarrito);
+                        drawerLayout.closeDrawers();
+                        return true;
                 }
+
                 return false;
             }
         });
@@ -136,8 +147,15 @@ public class PS4Games extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Intent intent = new Intent(getApplicationContext(), GameDetail.class);
+
+                Log.d("TAG", String.valueOf(gameTitle.get(position)));
+                Log.d("TAG", String.valueOf(gameDescription.get(position)));
+                Log.d("TAG", String.valueOf(gamePrice.get(position)));
+                Log.d("TAG", String.valueOf(gamePlatform.get(position)));
+                Log.d("TAG", String.valueOf(gameDate.get(position)));
+                Log.d("TAG", String.valueOf(gameSale.get(position)));
+
                 intent.putExtra("GameTitle", gameTitle.get(position));
                 intent.putExtra("GameDescription", gameDescription.get(position));
                 intent.putExtra("GameImage", gamePicture[position]);
@@ -167,9 +185,6 @@ public class PS4Games extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
     class MyAdapter extends ArrayAdapter<String> {

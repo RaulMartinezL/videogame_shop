@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +33,8 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.prefs.PreferenceChangeEvent;
 
 public class Carrito extends AppCompatActivity {
 
@@ -113,6 +117,14 @@ public class Carrito extends AppCompatActivity {
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
+
+                    case R.id.nav_carrito:
+                        item.setChecked(true);
+                        Intent intentCarrito = new Intent(Carrito.this, Carrito.class);
+
+                        startActivity(intentCarrito);
+                        drawerLayout.closeDrawers();
+                        return true;
                 }
                 return false;
             }
@@ -132,12 +144,33 @@ public class Carrito extends AppCompatActivity {
 
 
         // ESTO ES NULL ARREGLAR MAÑANA
-        gameTitle.add(getIntent().getStringExtra("GameTitleCart"));
-        gamePrice.add(getIntent().getStringExtra("GamePriceCart"));
+        //Intent intent = getIntent();
+        //gameTitle.add(intent.getStringExtra("GameTitleCart"));
+        //gamePrice.add(intent.getStringExtra("GamePriceCart"));
 
-        Log.d("TAG", String.valueOf(gamePrice));
+
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Map<String, ?> allEntries = prefs.getAll();
+        for(Map.Entry<String, ?> entry : allEntries.entrySet()){
+            Log.d("Map values", entry.getKey() + ": " + entry.getValue().toString());
+            if(entry.getKey() == "GameTitleCart"){
+                gameTitle.add(entry.getValue().toString());
+            }
+            else if (entry.getKey() == "GamePriceCart"){
+                gamePrice.add(entry.getValue().toString());
+            }
+        }
+
+
+        String titleAux = prefs.getString("GameTitleCart", "no id");
+        String priceAux = prefs.getString("GamePriceCart", "no id");
+        gameTitle.add(titleAux);
+        gamePrice.add(priceAux);
+
+
         Log.d("TAG", String.valueOf(gameTitle));
-
+        Log.d("TAG", String.valueOf(gamePrice));
 
 
         MyAdapter adapter = new MyAdapter(this, gameTitle, gamePrice);
