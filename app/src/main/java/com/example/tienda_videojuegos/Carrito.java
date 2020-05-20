@@ -139,9 +139,6 @@ public class Carrito extends AppCompatActivity {
         //layoutManager = new LinearLayoutManager(this);
         //recyclerView.setLayoutManager(layoutManager);
 
-        NextProcessBtn = findViewById(R.id.finalizar_compra);
-        // txtTotalAmount = (TextView) findViewById(R.id.total_price);
-
 
 
         // ESTO ES NULL ARREGLAR MAÑANA
@@ -176,6 +173,26 @@ public class Carrito extends AppCompatActivity {
 
         MyAdapter adapter = new MyAdapter(this, gameTitle, gamePrice);
         listView.setAdapter(adapter);
+
+
+
+
+
+        MaterialButton botonContacto =  findViewById(R.id.boton_finalizar_compra);
+        botonContacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intentCarrito = new Intent(Carrito.this, ConfirmarPedido.class);
+                intentCarrito.putExtra( "GameTitles", "Juego1");
+                startActivity(intentCarrito);
+            }
+        });
+
+
+
+
+
+
 
     }
 

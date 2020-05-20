@@ -96,7 +96,6 @@ public class ContactoSelect extends AppCompatActivity {
                     case R.id.nav_carrito:
                         item.setChecked(true);
                         Intent intentCarrito = new Intent(ContactoSelect.this, Carrito.class);
-
                         startActivity(intentCarrito);
                         drawerLayout.closeDrawers();
                         return true;
@@ -109,12 +108,12 @@ public class ContactoSelect extends AppCompatActivity {
 
         MaterialButton botonContacto =  findViewById(R.id.material_contacto_boton_contactar);
         botonContacto.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v){
-                            Intent intentContacto = new Intent(ContactoSelect.this, Contactar.class);
-                            startActivity(intentContacto);
-                        }
-                    });
+            @Override
+            public void onClick(View v){
+                Intent intentContacto = new Intent(ContactoSelect.this, Contactar.class);
+                startActivity(intentContacto);
+            }
+        });
 
 
         MaterialButton botonReclamar =  findViewById(R.id.material_contacto_boton_reclamar);

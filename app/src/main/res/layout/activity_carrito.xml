@@ -49,7 +49,7 @@
         >
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/finalizar_compra"
+            android:id="@+id/boton_finalizar_compra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
