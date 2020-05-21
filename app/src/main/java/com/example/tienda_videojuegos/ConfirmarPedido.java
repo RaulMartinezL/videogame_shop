@@ -13,8 +13,8 @@ import com.google.android.material.button.MaterialButton;
 public class ConfirmarPedido extends AppCompatActivity {
 
     public EditText mEmail;
-    public EditText mSubject;
-    public EditText mMessage;
+    public String mSubject = "Confirmación pedido";
+    public String mMessage = "Gracias por comprar en Canada Games, en breve llegará su pedido.";
 
 
 
@@ -24,12 +24,7 @@ public class ConfirmarPedido extends AppCompatActivity {
         setContentView(R.layout.activity_confirmar_pedido);
 
 
-        String nombreJuego = getIntent().getStringExtra( "GameTitles");
-
-
         mEmail = (EditText)findViewById(R.id.mailID);
-        mSubject =  (EditText)findViewById(R.id.subjectID);
-        mMessage =  (EditText)findViewById(R.id.messageID);
 
 
         MaterialButton botonContacto =  findViewById(R.id.boton_enviar_mail);
@@ -37,6 +32,9 @@ public class ConfirmarPedido extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 sendMail();
+
+                Intent intentConfirmarPedido = new Intent(ConfirmarPedido.this, MainActivity.class);
+                startActivity(intentConfirmarPedido);
             }
         });
 
@@ -46,10 +44,8 @@ public class ConfirmarPedido extends AppCompatActivity {
     private void sendMail(){
 
         String mail = mEmail.getText().toString().trim();
-        String message = mMessage.getText().toString().trim();
-        String subject = mSubject.getText().toString().trim();
 
-        JavaMailAPI javaMailAPI = new JavaMailAPI(this, mail, subject, message);
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, mail, mSubject, mMessage);
 
         javaMailAPI.execute();
 

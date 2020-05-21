@@ -10,11 +10,12 @@
     android:gravity="bottom"
     >
 
-    <TextView
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="PlaceHolder"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:layout_gravity="center"
+        android:src="@drawable/canadian_games"
+        />
 
 </LinearLayout>

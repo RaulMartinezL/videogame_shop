@@ -183,7 +183,6 @@ public class Carrito extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intentCarrito = new Intent(Carrito.this, ConfirmarPedido.class);
-                intentCarrito.putExtra( "GameTitles", "Juego1");
                 startActivity(intentCarrito);
             }
         });
