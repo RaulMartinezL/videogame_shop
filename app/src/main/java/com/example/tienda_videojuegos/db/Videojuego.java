@@ -46,4 +46,13 @@ public class Videojuego {
 
     }
 
+
+
+
+
+    //final int resourceId = mContext.getResources().getIdentifier("m9", "drawable", mContext.getPackageName());
+    //BitmapFactory.Options options = new BitmapFactory.Options();
+    //icon = BitmapFactory.decodeResource(mContext.getResources(), resourceId, options);
+
+
 }

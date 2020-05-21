@@ -63,7 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email:"
+            android:text="Motivo:"
             android:paddingLeft="2dp"/>
 
 
@@ -106,7 +106,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Motivo:"
+            android:text="Descripcion:"
             android:paddingLeft="2dp"/>
 
     </LinearLayout>
@@ -145,6 +145,28 @@
             android:id="@+id/añadir_imagen">
 
         </com.google.android.material.button.MaterialButton>
+
+
+        <ImageView
+            android:id="@+id/imagen_reclamacion_pedido"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="150dp"
+            android:layout_marginLeft="100dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/enviar_reclamacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="Enviar Reclamacion"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            />
 
 
     </RelativeLayout>

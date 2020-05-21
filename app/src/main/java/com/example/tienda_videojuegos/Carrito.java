@@ -39,8 +39,8 @@ import java.util.prefs.PreferenceChangeEvent;
 
 public class Carrito extends AppCompatActivity {
 
-    List<String> gameTitle = new ArrayList<String>();
-    List<String> gamePrice = new ArrayList<String>();
+    static List<String> gameTitle = new ArrayList<String>();
+    static List<String> gamePrice = new ArrayList<String>();
 
 
     private RecyclerView recyclerView;
@@ -131,9 +131,6 @@ public class Carrito extends AppCompatActivity {
             }
         });
 
-
-
-
         //recyclerView = findViewById(R.id.cat_list);
        // recyclerView.setHasFixedSize(true);
         //layoutManager = new LinearLayoutManager(this);
@@ -175,13 +172,14 @@ public class Carrito extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-
-
-
         MaterialButton botonContacto =  findViewById(R.id.boton_finalizar_compra);
         botonContacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+
+                gameTitle.clear();
+                gamePrice.clear();
+
                 Intent intentCarrito = new Intent(Carrito.this, ConfirmarPedido.class);
                 startActivity(intentCarrito);
             }
@@ -195,15 +193,6 @@ public class Carrito extends AppCompatActivity {
 
     }
 
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

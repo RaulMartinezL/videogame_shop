@@ -6,7 +6,8 @@
       "price": "10",
       "platform": "xbox",
       "date": "true",
-      "sale": "true"
+      "sale": "true",
+      "imagen": "m9"
     },
     {
       "name": "xbox2",
@@ -14,7 +15,8 @@
       "price": "20",
       "platform": "xbox",
       "date": "true",
-      "sale": "true"
+      "sale": "true",
+      "imagen": "m9"
     },
     {
       "name": "xbox3",
@@ -22,7 +24,8 @@
       "price": "30",
       "platform": "xbox",
       "date": "false",
-      "sale": "true"
+      "sale": "true",
+      "imagen": "m9"
     },
     {
       "name": "ps4_1",
@@ -30,7 +33,8 @@
       "price": "10",
       "platform": "ps4",
       "date": "true",
-      "sale": "true"
+      "sale": "true",
+      "imagen": "m9"
     },
     {
       "name": "ps4_2",
@@ -38,7 +42,8 @@
       "price": "20",
       "platform": "ps4",
       "date": "true",
-      "sale": "true"
+      "sale": "true",
+      "imagen": "m9"
     },
     {
       "name": "ps4_3",
@@ -46,7 +51,8 @@
       "price": "30",
       "platform": "ps4",
       "date": "false",
-      "sale": "true"
+      "sale": "true",
+      "imagen": "m9"
     }
   ]
 }

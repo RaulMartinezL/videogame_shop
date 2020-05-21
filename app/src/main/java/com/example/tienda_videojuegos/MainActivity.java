@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -41,7 +42,6 @@ import java.util.List;
 // TODO: Edit text boxes que no cambien de tamaño o limitar un tamaño maximo de caracteres. En contacto
 // TODO: Calcular la distancia del punto actual a la de la tienda.
 // TODO: hacer funcionar el boton de la app bar de la tienda
-// TODO: estilos
 // TODO: hacer scroll con varios listviews en el main, para mostrar ofertas y novedades
 // TODO: terminar el carrito de la compra. Arreglar las listas solo guardan la ultima vez que pulsamos el boton.
 // TODO: imagenes de la base de datos?
@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentCarrito);
                         drawerLayout.closeDrawers();
                         return true;
+
                 }
                 return false;
             }
@@ -178,12 +179,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

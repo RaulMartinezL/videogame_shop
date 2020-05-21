@@ -30,11 +30,11 @@
             android:title="Encuéntranos"/>
         <item
             android:id="@+id/nav_contacto"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_rate_review_black_24dp"
             android:title="Contacto" />
         <item
             android:id="@+id/nav_carrito"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="Carrito" />
 
     </group>

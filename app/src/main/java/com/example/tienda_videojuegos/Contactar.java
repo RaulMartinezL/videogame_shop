@@ -11,9 +11,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class Contactar extends AppCompatActivity {
@@ -101,16 +103,38 @@ public class Contactar extends AppCompatActivity {
 
 
         final EditText edit_nombre = (EditText)findViewById(R.id.consulta_nombre);
-        final EditText edit_email = (EditText)findViewById(R.id.consulta_email);
+        final EditText edit_subject = (EditText)findViewById(R.id.consulta_email);
         final EditText edit_consulta = (EditText)findViewById(R.id.consulta_consulta);
 
 
+        /*
         String getEmailId = edit_email.getText().toString();
         // Check if email id is valid or not
         if (!isEmailValid(getEmailId)){
              Toast.makeText(getApplicationContext(),"Introduce un email valido porfavor",Toast.LENGTH_SHORT).show();
         }
 
+         */
+
+
+        MaterialButton botonReclamar =  findViewById(R.id.contactar_siguiente);
+        botonReclamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                String to = "mailPractica2Studio@gmail.com";
+                String subject = edit_subject.getText().toString() + " from "+ edit_nombre.getText().toString();
+                String message = edit_consulta.getText().toString();
+
+                Intent email = new Intent(Intent.ACTION_SEND);
+                email.putExtra(Intent.EXTRA_EMAIL, new String[] { to });
+                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                email.putExtra(Intent.EXTRA_TEXT, message);
+                // need this to prompts email client only
+                email.setType("message/rfc822");
+                startActivity(Intent.createChooser(email, "Choose an Email client :"));
+            }
+        });
 
 
 
@@ -119,14 +143,7 @@ public class Contactar extends AppCompatActivity {
 
 
 
-    }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     @Override

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -7,4 +10,35 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity" />
+    tools:context=".MapsActivity"
+    android:layout_marginBottom="70dp">
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/map_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/distancia_entre_puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distancia"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</fragment>
+
+

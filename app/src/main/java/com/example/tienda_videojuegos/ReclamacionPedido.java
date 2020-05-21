@@ -1,20 +1,39 @@
 package com.example.tienda_videojuegos;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class ReclamacionPedido extends AppCompatActivity {
+
+    private static final int GALLERY_REQUEST = 1;
+    private static final int RETURN_MAIN = -10;
+    Uri uriImage = null;
+
+    ImageView imageView;
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -99,16 +118,77 @@ public class ReclamacionPedido extends AppCompatActivity {
         });
 
 
-    }
+        imageView = findViewById(R.id.imagen_reclamacion_pedido);
+        MaterialButton botonAddImagen =  findViewById(R.id.añadir_imagen);
 
+        botonAddImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent();
+                intent.setType("image/");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Seleccion una imagen"), GALLERY_REQUEST);
+
+            }
+        });
+
+
+        final EditText edit_nombre = (EditText)findViewById(R.id.reclamacion_nombre);
+        final EditText edit_subject = (EditText)findViewById(R.id.reclamacion_email);
+        final EditText edit_consulta = (EditText)findViewById(R.id.consulta_consulta);
+        final EditText edit_factura = (EditText)findViewById(R.id.reclamacion_id_factura);
+
+        MaterialButton botonEnviarReclamacion =  findViewById(R.id.enviar_reclamacion);
+        botonEnviarReclamacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                String to = "mailPractica2Studio@gmail.com";
+                String subject = edit_subject.getText().toString() + " from "+ edit_nombre.getText().toString()
+                        + " factura " + edit_factura.getText().toString();
+                String message = edit_consulta.getText().toString();
+
+                Intent email = new Intent(Intent.ACTION_SEND);
+                email.putExtra(Intent.EXTRA_EMAIL, new String[] { to });
+                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                email.putExtra(Intent.EXTRA_TEXT, message);
+                email.putExtra(Intent.EXTRA_STREAM, uriImage);
+                email.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                // need this to prompts email client only
+                email.setType("message/rfc822");
+                startActivity(Intent.createChooser(email, "Choose an Email client :"));
+
+
+
+                Intent intentCarrito = new Intent(ReclamacionPedido.this, MainActivity.class);
+                startActivityForResult(Intent.createChooser(intentCarrito, "Seleccion una imagen"), RETURN_MAIN);
+
+
+
+            }
+        });
+
+
+    }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK && data != null){
+            Uri uri = data.getData();
+            uriImage = uri;
+            imageView.setImageURI(uri);
+
+        }
+
+        if(requestCode == RETURN_MAIN){
+            Intent intentCarrito = new Intent(ReclamacionPedido.this, MainActivity.class);
+            startActivity(intentCarrito);
+        }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -120,5 +200,8 @@ public class ReclamacionPedido extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }

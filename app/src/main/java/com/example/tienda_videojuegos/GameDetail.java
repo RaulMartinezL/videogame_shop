@@ -135,34 +135,12 @@ public class GameDetail extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("GameTitleCart", gameTitle);
-        editor.putString("GamePriceCart", gamePrice);
-        editor.apply();
 
-
-
-        /*
-        Intent intent = new Intent(getApplicationContext(), Carrito.class);
-        Log.d("TAG", String.valueOf(gameTitle));
-        Log.d("TAG", String.valueOf(gamePrice));
-        intent.putExtra("GameTitleCart", gameTitle);
-        intent.putExtra("GamePriceCart", gamePrice);
-        startActivityForResult(intent, 1);
-
-         */
-
+        Log.d("TAG", gameTitle);
+        Carrito.gameTitle.add(gameTitle);
+        Carrito.gamePrice.add(gamePrice);
 
         Toast.makeText(this, "Juego añadido a la cesta", Toast.LENGTH_SHORT).show();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     @Override

@@ -37,7 +37,8 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 + "PRICE TEXT,"
                 + "PLATFORM TEXT,"
                 + "DATE TEXT,"
-                + "SALE TEXT);");
+                + "SALE TEXT,"
+                + "IMAGE TEXT);");
 
         loadDatabase(db, context);
     }
@@ -48,7 +49,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
     }
 
     private static void addVideogame(SQLiteDatabase db, String name, String description, String price,
-                                     String platform, String date, String sale) {
+                                     String platform, String date, String sale, String imagen) {
 
         ContentValues gamesData = new ContentValues();
         gamesData.put("NAME", name);
@@ -57,6 +58,8 @@ public class NoteDatabase extends SQLiteOpenHelper {
         gamesData.put("PRICE", price);
         gamesData.put("DATE", date);
         gamesData.put("SALE", sale);
+        gamesData.put("IMAGEN", imagen);
+
         db.insert("GAMES", null, gamesData);
     }
 
@@ -81,9 +84,10 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 String game_platform = jo_inside.getString("platform");
                 String game_date = jo_inside.getString("date");
                 String game_onsale = jo_inside.getString("sale");
+                String game_image = jo_inside.getString("imagen");
 
                 addVideogame(db, game_name, game_description, game_price,
-                        game_platform, game_date, game_onsale);
+                        game_platform, game_date, game_onsale, game_image);
             }
         } catch (JSONException ex) {
             ex.printStackTrace();
