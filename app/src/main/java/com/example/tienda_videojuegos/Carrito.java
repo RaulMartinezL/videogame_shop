@@ -186,11 +186,6 @@ public class Carrito extends AppCompatActivity {
         });
 
 
-
-
-
-
-
     }
 
 
