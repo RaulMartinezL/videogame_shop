@@ -107,16 +107,6 @@ public class Contactar extends AppCompatActivity {
         final EditText edit_consulta = (EditText)findViewById(R.id.consulta_consulta);
 
 
-        /*
-        String getEmailId = edit_email.getText().toString();
-        // Check if email id is valid or not
-        if (!isEmailValid(getEmailId)){
-             Toast.makeText(getApplicationContext(),"Introduce un email valido porfavor",Toast.LENGTH_SHORT).show();
-        }
-
-         */
-
-
         MaterialButton botonReclamar =  findViewById(R.id.contactar_siguiente);
         botonReclamar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +134,14 @@ public class Contactar extends AppCompatActivity {
 
 
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     @Override

@@ -35,16 +35,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: home activity button pulsando en el texto
-// TODO: arreglar la query de ofertas
-// TODO: ofertas gestionarlas con fechas
-// TODO: Arreglar Toast de comprobacion del mail
-// TODO: Edit text boxes que no cambien de tamaño o limitar un tamaño maximo de caracteres. En contacto
-// TODO: Calcular la distancia del punto actual a la de la tienda.
+
+
 // TODO: hacer funcionar el boton de la app bar de la tienda
 // TODO: hacer scroll con varios listviews en el main, para mostrar ofertas y novedades
-// TODO: terminar el carrito de la compra. Arreglar las listas solo guardan la ultima vez que pulsamos el boton.
-// TODO: imagenes de la base de datos?
 
 
 
@@ -177,6 +171,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
 
