@@ -113,9 +113,8 @@ public class NovedadesGames extends AppCompatActivity {
 
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
-        String query = "SELECT * FROM GAMES  WHERE date = 'true' ";
+        String query = "SELECT * FROM GAMES WHERE date = 'true' ";
         ArrayList<List<String>> novedadesGames = foo.getData(query);
-
 
         for (int i = 0; i < novedadesGames.size(); i++){
             gameTitle.add(novedadesGames.get(i).get(0));

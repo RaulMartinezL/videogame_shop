@@ -46,7 +46,6 @@ public class ReclamacionPedido extends AppCompatActivity {
         setContentView(R.layout.activity_reclamacion_pedido);
 
 
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);

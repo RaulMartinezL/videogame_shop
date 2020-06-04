@@ -114,9 +114,6 @@ public class XboxGames extends AppCompatActivity {
         });
 
 
-
-
-
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
         String query = "SELECT * FROM GAMES WHERE platform = 'xbox'";

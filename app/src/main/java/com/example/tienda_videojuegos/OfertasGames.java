@@ -113,8 +113,6 @@ public class OfertasGames extends AppCompatActivity {
             }
         });
 
-
-
         SQLiteOpenHelper gameDatabase = new NoteDatabase(getApplicationContext());
         Videojuego foo = new Videojuego(gameDatabase);
         String query = "SELECT * FROM GAMES WHERE sale = 'true' ";

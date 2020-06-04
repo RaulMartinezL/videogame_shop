@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    ListView listView;
+    ListView listViewNovedades;
+    ListView listViewOfertas;
 
     List<String> gameTitle = new ArrayList<String>();
     List<String> gameDescription = new ArrayList<String>();
@@ -62,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = findViewById(R.id.novedadesGamesMain);
+        listViewNovedades = findViewById(R.id.novedadesGamesMain);
+        listViewOfertas = findViewById(R.id.ofertasGameMain);
+
+        Log.d("TAG", "EMPEZAMOS AQUI");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         MyAdapter adapter1 = new MyAdapter(this, gameTitle, gameDescription, gamePicture, gamePrice, gamePlatform);
-        listView.setAdapter(adapter1);
+        listViewNovedades.setAdapter(adapter1);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewNovedades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -153,9 +158,41 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("GameDescription", gameDescription.get(position));
                 intent.putExtra("GameImage", gamePicture[position]);
                 intent.putExtra("GamePrice", gamePrice.get(position));
-                intent.putExtra("GamePrice", gamePlatform.get(position));
-                intent.putExtra("GamePrice", gameDate.get(position));
-                intent.putExtra("GamePrice", gameSale.get(position));
+                intent.putExtra("GamePlatform", gamePlatform.get(position));
+                intent.putExtra("GameDate", gameDate.get(position));
+                intent.putExtra("GameSale", gameSale.get(position));
+                startActivity(intent);
+            }
+        });
+
+
+        String query_ofertas = "SELECT * FROM GAMES  WHERE sale = 'true' ";
+        ArrayList<List<String>> ofertasGames = foo.getData(query_ofertas);
+
+        for (int i = 0; i < ofertasGames.size(); i++){
+            gameTitle.add(ofertasGames.get(i).get(0));
+            gameDescription.add(ofertasGames.get(i).get(1));
+            gamePlatform.add(ofertasGames.get(i).get(2));
+            gamePrice.add(ofertasGames.get(i).get(3));
+            gameDate.add(ofertasGames.get(i).get(4));
+            gameSale.add(ofertasGames.get(i).get(5));
+        }
+
+        MyAdapter adapter2 = new MyAdapter(this, gameTitle, gameDescription, gamePicture, gamePrice, gamePlatform);
+        listViewOfertas.setAdapter(adapter1);
+
+        listViewOfertas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(getApplicationContext(), GameDetail.class);
+                intent.putExtra("GameTitle", gameTitle.get(position));
+                intent.putExtra("GameDescription", gameDescription.get(position));
+                intent.putExtra("GameImage", gamePicture[position]);
+                intent.putExtra("GamePrice", gamePrice.get(position));
+                intent.putExtra("GamePlatform", gamePlatform.get(position));
+                intent.putExtra("GameDate", gameDate.get(position));
+                intent.putExtra("GameSale", gameSale.get(position));
                 startActivity(intent);
             }
         });
@@ -188,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
-
         }
         return super.onOptionsItemSelected(item);
     }
