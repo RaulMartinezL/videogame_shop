@@ -5,33 +5,36 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_ps4"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_videogame_asset_black_24dp"
             android:title="Juegos PS4" />
         <item
             android:id="@+id/nav_xbox"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_videogame_asset_black_24dp"
             android:title="Juegos Xbox" />
         <item
             android:id="@+id/nav_ofertas"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_videogame_asset_black_24dp"
             android:title="Juegos oferta" />
         <item
             android:id="@+id/nav_novedades"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_videogame_asset_black_24dp"
             android:title="Novedades" />
 
     </group>
 
-    <group android:checkableBehavior="single">
 
-        <item
-            android:id="@+id/nav_donde_estamos"
-            android:icon="@drawable/ic_place_black_24dp"
-            android:title="Encuéntranos"/>
-        <item
-            android:id="@+id/nav_contacto"
-            android:icon="@drawable/ic_rate_review_black_24dp"
-            android:title="Contacto" />
-    </group>
+    <item android:title="Sobre nosotros">
+        <menu>
+            <item
+                android:id="@+id/nav_donde_estamos"
+                android:icon="@drawable/ic_place_black_24dp"
+                android:title="Encuéntranos"/>
+            <item
+                android:id="@+id/nav_contacto"
+                android:icon="@drawable/ic_rate_review_black_24dp"
+                android:title="Contacto" />
+        </menu>
+    </item>
+
 
 </menu>

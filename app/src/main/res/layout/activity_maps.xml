@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+
+    <fragment
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
@@ -8,29 +16,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MapsActivity"
-    android:layout_marginBottom="70dp">
+    android:layout_marginBottom="70dp"/>
 
-
-    <!--LinearLayout
-        android:id="@+id/map_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/distancia_entre_puntos"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:id="@+id/distancia_entre_puntos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Distancia"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="bottom"
-            />
+        android:text="Distancia"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="bottom"
+        />
 
-    </LinearLayout-->
+</LinearLayout>
 
-
-</fragment>
 
 
