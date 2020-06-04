@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         MyAdapter adapter2 = new MyAdapter(this, gameTitle, gameDescription, gamePicture, gamePrice, gamePlatform);
-        listViewOfertas.setAdapter(adapter1);
+        listViewOfertas.setAdapter(adapter2);
 
         listViewOfertas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
