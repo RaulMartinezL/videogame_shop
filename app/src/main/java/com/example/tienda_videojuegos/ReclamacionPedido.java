@@ -104,14 +104,6 @@ public class ReclamacionPedido extends AppCompatActivity {
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
-
-                    case R.id.nav_carrito:
-                        item.setChecked(true);
-                        Intent intentCarrito = new Intent(ReclamacionPedido.this, Carrito.class);
-
-                        startActivity(intentCarrito);
-                        drawerLayout.closeDrawers();
-                        return true;
                 }
                 return false;
             }
@@ -160,12 +152,8 @@ public class ReclamacionPedido extends AppCompatActivity {
                 startActivity(Intent.createChooser(email, "Choose an Email client :"));
 
 
-
                 Intent intentCarrito = new Intent(ReclamacionPedido.this, MainActivity.class);
                 startActivityForResult(Intent.createChooser(intentCarrito, "Seleccion una imagen"), RETURN_MAIN);
-
-
-
             }
         });
 
@@ -176,17 +164,24 @@ public class ReclamacionPedido extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        MenuItem item_shopping_cart = menu.findItem(R.id.nav_boton_tienda);
+        item_shopping_cart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intentCarrito = new Intent(ReclamacionPedido.this, Carrito.class);
+                startActivity(intentCarrito);
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK && data != null){
-            Uri uri = data.getData();
-            uriImage = uri;
-            imageView.setImageURI(uri);
-
+            this.uriImage = data.getData();
+            imageView.setImageURI(this.uriImage);
         }
 
         if(requestCode == RETURN_MAIN){
@@ -194,7 +189,6 @@ public class ReclamacionPedido extends AppCompatActivity {
             startActivity(intentCarrito);
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

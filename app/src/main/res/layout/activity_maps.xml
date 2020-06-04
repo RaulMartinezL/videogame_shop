@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
 <fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -14,10 +11,7 @@
     android:layout_marginBottom="70dp">
 
 
-
-
-
-    <LinearLayout
+    <!--LinearLayout
         android:id="@+id/map_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,12 +25,10 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:layout_marginLeft="5dp"
+            android:layout_gravity="bottom"
             />
 
-    </LinearLayout>
-
-
-
+    </LinearLayout-->
 
 
 </fragment>

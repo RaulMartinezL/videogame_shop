@@ -37,7 +37,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
     }
 
 
@@ -54,13 +53,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng localizacion_donde_estamos = new LatLng(40.445475, -3.727576);
         map.addMarker(new MarkerOptions().position(localizacion_donde_estamos).title("Nosotros estamos aquí"));
 
+
         /*
         double distance = SphericalUtil.computeDistanceBetween(localizacion_donde_estamos, localizacin_tienda);
         TextView textView = (TextView) findViewById(R.id.distancia_entre_puntos);
         textView.setText((int) distance);
-
          */
-
     }
 
 }

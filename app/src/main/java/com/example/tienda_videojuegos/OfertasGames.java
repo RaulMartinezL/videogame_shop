@@ -108,14 +108,6 @@ public class OfertasGames extends AppCompatActivity {
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
-
-                    case R.id.nav_carrito:
-                        item.setChecked(true);
-                        Intent intentCarrito = new Intent(OfertasGames.this, Carrito.class);
-
-                        startActivity(intentCarrito);
-                        drawerLayout.closeDrawers();
-                        return true;
                 }
                 return false;
             }
@@ -162,7 +154,16 @@ public class OfertasGames extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        MenuItem item_shopping_cart = menu.findItem(R.id.nav_boton_tienda);
+        item_shopping_cart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intentCarrito = new Intent(OfertasGames.this, Carrito.class);
+                startActivity(intentCarrito);
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

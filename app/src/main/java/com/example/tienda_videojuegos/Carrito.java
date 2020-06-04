@@ -118,31 +118,10 @@ public class Carrito extends AppCompatActivity {
                         startActivity(intentGPS);
                         drawerLayout.closeDrawers();
                         return true;
-
-                    case R.id.nav_carrito:
-                        item.setChecked(true);
-                        Intent intentCarrito = new Intent(Carrito.this, Carrito.class);
-
-                        startActivity(intentCarrito);
-                        drawerLayout.closeDrawers();
-                        return true;
                 }
                 return false;
             }
         });
-
-        //recyclerView = findViewById(R.id.cat_list);
-       // recyclerView.setHasFixedSize(true);
-        //layoutManager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(layoutManager);
-
-
-
-        // ESTO ES NULL ARREGLAR MAÑANA
-        //Intent intent = getIntent();
-        //gameTitle.add(intent.getStringExtra("GameTitleCart"));
-        //gamePrice.add(intent.getStringExtra("GamePriceCart"));
-
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
