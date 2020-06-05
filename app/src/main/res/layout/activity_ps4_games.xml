@@ -42,11 +42,7 @@
             tools:ignore="MissingConstraint"
             android:layout_gravity="center"
 
-            android:dividerHeight="2dp"
-            android:divider="#000000"
-            android:headerDividersEnabled="true"
-            android:footerDividersEnabled="true"
-            tools:layout_editor_absoluteX="1dp" />
+           />
 
     </LinearLayout>
 

@@ -39,16 +39,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 + "DATE TEXT,"
                 + "SALE TEXT);");
 
-
-        addVideogame(db, "xbox1", "xbox1 game description", "10", "xbox", "true", "true");
-        addVideogame(db, "xbox2", "xbox2 game description", "10", "xbox", "true", "true");
-        addVideogame(db, "xbox3", "xbox3 game description", "10", "xbox", "true", "true");
-        addVideogame(db, "ps4_1", "ps4_1 game description", "10", "ps4", "true", "true");
-        addVideogame(db, "ps4_2", "ps4_2 game description", "10", "ps4", "true", "true");
-        addVideogame(db, "ps4_3", "ps4_3 game description", "10", "ps4", "true", "true");
-
-
-        //loadDatabase(db, context);
+        loadDatabase(db, context);
     }
 
     @Override
