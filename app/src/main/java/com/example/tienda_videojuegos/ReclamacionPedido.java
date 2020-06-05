@@ -148,7 +148,13 @@ public class ReclamacionPedido extends AppCompatActivity {
                 email.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 // need this to prompts email client only
                 email.setType("message/rfc822");
-                startActivity(Intent.createChooser(email, "Choose an Email client :"));
+
+                try {
+                    startActivity(Intent.createChooser(email, "Choose an Email client :"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
 
                 Intent intentCarrito = new Intent(ReclamacionPedido.this, MainActivity.class);

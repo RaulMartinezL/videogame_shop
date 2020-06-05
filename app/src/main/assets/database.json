@@ -24,7 +24,7 @@
       "price": "30",
       "platform": "xbox",
       "date": "false",
-      "sale": "true",
+      "sale": "false",
 
     },
     {
@@ -42,7 +42,7 @@
       "price": "20",
       "platform": "ps4",
       "date": "true",
-      "sale": "true",
+      "sale": "false",
 
     },
     {

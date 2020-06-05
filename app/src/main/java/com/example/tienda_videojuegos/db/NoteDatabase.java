@@ -37,10 +37,18 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 + "PRICE TEXT,"
                 + "PLATFORM TEXT,"
                 + "DATE TEXT,"
-                + "SALE TEXT,"
-                + "IMAGE TEXT);");
+                + "SALE TEXT);");
 
-        loadDatabase(db, context);
+
+        addVideogame(db, "xbox1", "xbox1 game description", "10", "xbox", "true", "true");
+        addVideogame(db, "xbox2", "xbox2 game description", "10", "xbox", "true", "true");
+        addVideogame(db, "xbox3", "xbox3 game description", "10", "xbox", "true", "true");
+        addVideogame(db, "ps4_1", "ps4_1 game description", "10", "ps4", "true", "true");
+        addVideogame(db, "ps4_2", "ps4_2 game description", "10", "ps4", "true", "true");
+        addVideogame(db, "ps4_3", "ps4_3 game description", "10", "ps4", "true", "true");
+
+
+        //loadDatabase(db, context);
     }
 
     @Override
@@ -49,7 +57,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
     }
 
     private static void addVideogame(SQLiteDatabase db, String name, String description, String price,
-                                     String platform, String date, String sale, String imagen) {
+                                     String platform, String date, String sale) {
 
         ContentValues gamesData = new ContentValues();
         gamesData.put("NAME", name);
@@ -58,7 +66,6 @@ public class NoteDatabase extends SQLiteOpenHelper {
         gamesData.put("PRICE", price);
         gamesData.put("DATE", date);
         gamesData.put("SALE", sale);
-        gamesData.put("IMAGEN", imagen);
 
         Log.d("TAG", String.valueOf(name));
         Log.d("TAG", "Cargamos datos");
@@ -86,10 +93,9 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 String game_platform = jo_inside.getString("platform");
                 String game_date = jo_inside.getString("date");
                 String game_onsale = jo_inside.getString("sale");
-                String game_image = jo_inside.getString("imagen");
 
                 addVideogame(db, game_name, game_description, game_price,
-                        game_platform, game_date, game_onsale, game_image);
+                        game_platform, game_date, game_onsale);
             }
         } catch (JSONException ex) {
             ex.printStackTrace();

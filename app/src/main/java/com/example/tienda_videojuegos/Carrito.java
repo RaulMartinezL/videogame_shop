@@ -123,30 +123,6 @@ public class Carrito extends AppCompatActivity {
             }
         });
 
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        Map<String, ?> allEntries = prefs.getAll();
-        for(Map.Entry<String, ?> entry : allEntries.entrySet()){
-            Log.d("Map values", entry.getKey() + ": " + entry.getValue().toString());
-            if(entry.getKey() == "GameTitleCart"){
-                gameTitle.add(entry.getValue().toString());
-            }
-            else if (entry.getKey() == "GamePriceCart"){
-                gamePrice.add(entry.getValue().toString());
-            }
-        }
-
-
-        String titleAux = prefs.getString("GameTitleCart", "no id");
-        String priceAux = prefs.getString("GamePriceCart", "no id");
-        gameTitle.add(titleAux);
-        gamePrice.add(priceAux);
-
-
-        Log.d("TAG", String.valueOf(gameTitle));
-        Log.d("TAG", String.valueOf(gamePrice));
-
-
         MyAdapter adapter = new MyAdapter(this, gameTitle, gamePrice);
         listView.setAdapter(adapter);
 
