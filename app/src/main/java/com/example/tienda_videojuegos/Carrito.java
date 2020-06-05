@@ -7,35 +7,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.prefs.PreferenceChangeEvent;
+
 
 public class Carrito extends AppCompatActivity {
 
@@ -139,10 +127,7 @@ public class Carrito extends AppCompatActivity {
                 startActivity(intentCarrito);
             }
         });
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -156,8 +141,6 @@ public class Carrito extends AppCompatActivity {
     }
 
 
-
-
     class MyAdapter extends ArrayAdapter<String> {
 
 
@@ -166,7 +149,7 @@ public class Carrito extends AppCompatActivity {
         String[] gamePrice;
 
 
-        MyAdapter(Context c, List<String> title, List<String> price){
+        MyAdapter(Context c, List<String> title, List<String> price) {
             super(c, R.layout.row_carrito_compra, R.id.gameTitle, title);
             this.context = c;
             this.gameTitle = title.toArray(new String[0]);
@@ -176,7 +159,7 @@ public class Carrito extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row_carrito_compra, parent, false);
 
             TextView myTitle = row.findViewById(R.id.gameTitleCarrito);
@@ -188,8 +171,4 @@ public class Carrito extends AppCompatActivity {
             return row;
         }
     }
-
-
-
-
 }

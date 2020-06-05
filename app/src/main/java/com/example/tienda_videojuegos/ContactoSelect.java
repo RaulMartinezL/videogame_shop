@@ -6,15 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
+
 
 import com.google.android.material.button.MaterialButton;
 
@@ -98,7 +95,6 @@ public class ContactoSelect extends AppCompatActivity {
         });
 
 
-
         MaterialButton botonContacto =  findViewById(R.id.material_contacto_boton_contactar);
         botonContacto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,15 +114,10 @@ public class ContactoSelect extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem item_shopping_cart = menu.findItem(R.id.nav_boton_tienda);
         item_shopping_cart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -150,6 +141,4 @@ public class ContactoSelect extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

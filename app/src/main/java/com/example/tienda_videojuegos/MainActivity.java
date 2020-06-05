@@ -9,10 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -157,13 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         MenuItem item_shopping_cart = menu.findItem(R.id.nav_boton_tienda);
@@ -231,6 +226,4 @@ public class MainActivity extends AppCompatActivity {
             return row;
         }
     }
-
-
 }

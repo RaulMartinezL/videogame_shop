@@ -58,8 +58,6 @@ public class NoteDatabase extends SQLiteOpenHelper {
         gamesData.put("DATE", date);
         gamesData.put("SALE", sale);
 
-        Log.d("TAG", String.valueOf(name));
-        Log.d("TAG", "Cargamos datos");
         db.insert("GAMES", null, gamesData);
     }
 

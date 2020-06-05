@@ -3,7 +3,6 @@ package com.example.tienda_videojuegos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -41,8 +40,6 @@ public class ConfirmarPedido extends AppCompatActivity {
     }
 
 
-
-
     private void sendMail(){
 
         String mail = mEmail.getText().toString().trim();
@@ -52,6 +49,4 @@ public class ConfirmarPedido extends AppCompatActivity {
         javaMailAPI.execute();
 
     }
-
-
 }

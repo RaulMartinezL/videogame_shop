@@ -162,7 +162,6 @@ public class PS4Games extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem item_shopping_cart = menu.findItem(R.id.nav_boton_tienda);
         item_shopping_cart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -208,7 +207,6 @@ public class PS4Games extends AppCompatActivity {
             this.gamePicture = imgs;
             this.gamePrice = price.toArray(new String[0]);
             this.gamePlatform = platform.toArray(new String[0]);
-
 
         }
 

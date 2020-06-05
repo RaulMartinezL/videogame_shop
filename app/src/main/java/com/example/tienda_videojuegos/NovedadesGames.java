@@ -148,7 +148,6 @@ public class NovedadesGames extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem item_shopping_cart = menu.findItem(R.id.nav_boton_tienda);
         item_shopping_cart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -215,10 +214,5 @@ public class NovedadesGames extends AppCompatActivity {
             return row;
         }
     }
-
-
-
-
-
 }
 
