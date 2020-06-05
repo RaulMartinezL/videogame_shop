@@ -38,10 +38,6 @@ import java.util.List;
 
 
 
-// TODO: hacer funcionar el boton de la app bar de la tienda
-
-
-
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
